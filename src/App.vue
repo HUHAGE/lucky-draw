@@ -423,6 +423,8 @@ export default {
   position: relative;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  margin: 0;
+  padding: 0;
 
   header {
     height: 80px;
@@ -438,6 +440,13 @@ export default {
     left: 0;
     right: 0;
     z-index: 100;
+    margin: 0;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
 
     .title {
       font-size: 36px;
@@ -505,7 +514,7 @@ export default {
   }
 
   .main-content {
-    margin-top: 80px;
+    padding-top: 80px;
     height: calc(100vh - 80px);
     position: relative;
     overflow: hidden;
