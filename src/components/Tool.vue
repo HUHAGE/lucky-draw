@@ -82,6 +82,7 @@
       :visible.sync="showImport"
       class="import-dialog"
       width="400px"
+      title="导入名单"
     >
       <el-input
         type="textarea"
@@ -110,6 +111,7 @@
       width="300px"
       class="c-removeoptions"
       :append-to-body="true"
+      title="重置选项"
     >
       <el-form ref="form" :model="removeInfo" label-width="80px" size="mini">
         <el-form-item label="重置选项">
@@ -123,7 +125,6 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="resetConfig">确定重置</el-button>
-          <el-button @click="showRemoveoptions = false">取消</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -507,21 +508,148 @@ export default {
   }
 }
 .import-dialog {
-  .footer {
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
+  .el-dialog {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .el-dialog__header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      
+      .el-dialog__title {
+        font-size: 18px;
+        font-weight: 600;
+        background: linear-gradient(45deg, #904e95, #e96443);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .el-dialog__body {
+      padding: 25px 20px !important;
+
+      .el-textarea__inner {
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        transition: all 0.3s ease;
+        
+        &:hover, &:focus {
+          border-color: #e96443;
+          box-shadow: 0 0 0 2px rgba(233, 100, 67, 0.1);
+        }
+      }
+    }
+
+    .footer {
+      padding: 10px 20px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+      .el-button {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+        border-radius: 20px;
+        
+        &--primary {
+          background: linear-gradient(45deg, #904e95, #e96443);
+          border: none;
+          box-shadow: 0 4px 12px rgba(233, 100, 67, 0.2);
+          
+          &:hover {
+            background: linear-gradient(45deg, #e96443, #904e95);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(233, 100, 67, 0.3);
+          }
+          
+          &:active {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
   }
 }
 .c-removeoptions {
   .el-dialog {
-    height: 290px;
-  }
-  .el-radio.is-bordered + .el-radio.is-bordered {
-    margin-left: 0px;
-  }
-  .el-radio.is-bordered {
-    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .el-dialog__header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      
+      .el-dialog__title {
+        font-size: 18px;
+        font-weight: 600;
+        background: linear-gradient(45deg, #ee7752, #e73c7e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .el-dialog__body {
+      padding: 25px 20px !important;
+
+      .el-radio.is-bordered {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: #e73c7e;
+          box-shadow: 0 0 0 2px rgba(231, 60, 126, 0.1);
+        }
+        
+        &.is-checked {
+          border-color: #e73c7e;
+          background: rgba(231, 60, 126, 0.05);
+        }
+      }
+
+      .el-form-item {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .el-dialog__footer {
+      padding: 10px 20px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+      .el-button {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+        border-radius: 20px;
+        
+        &--primary {
+          background: linear-gradient(45deg, #ee7752, #e73c7e);
+          border: none;
+          box-shadow: 0 4px 12px rgba(231, 60, 126, 0.2);
+          
+          &:hover {
+            background: linear-gradient(45deg, #e73c7e, #ee7752);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(231, 60, 126, 0.3);
+          }
+          
+          &:active {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
   }
 }
 </style>

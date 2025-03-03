@@ -136,7 +136,93 @@ export default {
 <style lang="scss">
 .c-Importphoto {
   .el-dialog {
-    height: 380px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .el-dialog__header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      
+      .el-dialog__title {
+        font-size: 18px;
+        font-weight: 600;
+        background: linear-gradient(45deg, #614385, #516395);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .el-dialog__body {
+      padding: 25px 20px !important;
+
+      .el-input__inner {
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        
+        &:hover, &:focus {
+          border-color: #516395;
+          box-shadow: 0 0 0 2px rgba(81, 99, 149, 0.1);
+        }
+      }
+
+      .selectbg {
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px dashed rgba(81, 99, 149, 0.5);
+        background: rgba(81, 99, 149, 0.05);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: #516395;
+          background: rgba(81, 99, 149, 0.1);
+        }
+      }
+
+      .photo {
+        margin: 20px 0;
+        text-align: center;
+        
+        img {
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .el-dialog__footer {
+      padding: 10px 20px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+      .el-button {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+        border-radius: 20px;
+        
+        &--primary {
+          background: linear-gradient(45deg, #614385, #516395);
+          border: none;
+          box-shadow: 0 4px 12px rgba(81, 99, 149, 0.2);
+          
+          &:hover {
+            background: linear-gradient(45deg, #516395, #614385);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(81, 99, 149, 0.3);
+          }
+          
+          &:active {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
   }
   label {
     margin-right: 20px;
