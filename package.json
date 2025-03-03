@@ -7,6 +7,7 @@
     "dev": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "serve": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "build:plugin": "npm run build && node scripts/build-plugin.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -23,13 +24,15 @@
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-prettier": "^5.0.0",
+    "archiver": "^7.0.1",
     "babel-eslint": "^10.0.3",
+    "copy-webpack-plugin": "^6.4.1",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.19.1",
     "sass": "^1.71.1",
     "sass-loader": "^10.1.1",
-    "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.10"
   }
 }
