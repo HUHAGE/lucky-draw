@@ -1,7 +1,7 @@
 <template>
   <div id="root">
     <header>
-      <div class="title">年会抽奖</div>
+      <div class="title">{{ config.name }}</div>
       <div class="result-display">
         <Publicity v-show="!running" />
       </div>
@@ -102,7 +102,6 @@
       <Result :visible.sync="showResult"></Result>
 
       <span class="copy-right">
-        Copyright©zhangyongfeng5350@gmail.com
       </span>
 
       <audio
@@ -405,16 +404,10 @@ export default {
     .title {
       font-size: 36px;
       font-weight: bold;
-      color: white;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      color: #f5f5f5;
+      text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
       letter-spacing: 4px;
-      background: linear-gradient(45deg, #fff 30%, #ffeb3b 50%, #fff 70%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 200% auto;
-      animation: shine 3s linear infinite;
-      width: 200px;
+      width: 360px;
     }
 
     .result-display {
@@ -569,12 +562,6 @@ export default {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
-  }
-}
-
-@keyframes shine {
-  to {
-    background-position: 200% center;
   }
 }
 </style>
