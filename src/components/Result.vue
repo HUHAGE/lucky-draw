@@ -134,22 +134,28 @@ export default {
       font-size: 18px;
       font-weight: bold;
       border-radius: 4px;
-      border: 1px solid #ccc;
-      background-color: #f2f2f2;
+      border: none;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+      color: white;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+      transition: all 0.3s ease;
       margin-left: 5px;
       margin-bottom: 5px;
       position: relative;
       cursor: pointer;
       &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 107, 107, 0.3);
+        
         &::before {
           content: '删除';
           width: 100%;
           height: 100%;
-          background-color: #ccc;
+          background-color: rgba(0, 0, 0, 0.2);
           position: absolute;
           left: 0;
           top: 0;
-          color: red;
+          color: white;
         }
       }
     }

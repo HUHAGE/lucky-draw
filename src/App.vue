@@ -374,14 +374,10 @@ export default {
 #root {
   height: 100%;
   position: relative;
-  background-image: url('./assets/bg1.jpg');
-  background-size: 100% 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: #121936;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   .mask {
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
+    backdrop-filter: blur(5px);
   }
   header {
     height: 50px;
@@ -452,10 +448,12 @@ export default {
     flex-wrap: wrap;
   }
   .itemres {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     width: 160px;
     height: 160px;
-    border-radius: 4px;
     border: 1px solid #ccc;
     line-height: 160px;
     font-weight: bold;
@@ -481,8 +479,11 @@ export default {
       bottom: 0;
       left: 0;
       font-size: 14px;
-      // border-radius: 50%;
       z-index: 1;
+    }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
   }
 }

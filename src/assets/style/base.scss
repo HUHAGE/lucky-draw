@@ -33,6 +33,9 @@ input {
 body {
   overflow: hidden;
   padding: 0 !important;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
 }
 .el-form-item {
   margin-bottom: 5px !important;
@@ -51,4 +54,16 @@ body {
   width: 5px;
   height: 5px;
   background-color: #ccc;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

@@ -339,9 +339,22 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .el-button + .el-button {
-    margin-top: 20px;
-    margin-left: 0px;
+  .el-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.05);
+    }
+    
+    & + .el-button {
+      margin-top: 20px;
+      margin-left: 0px;
+    }
   }
 }
 .setwat-dialog {

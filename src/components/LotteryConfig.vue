@@ -147,12 +147,25 @@ export default {
 </script>
 <style lang="scss">
 .c-LotteryConfig {
-  .el-dialog__body {
-    height: 340px;
-    .container {
-      height: 100%;
-      overflow-y: auto;
-      padding: 0 10px;
+  .el-dialog {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+    .el-dialog__header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .el-dialog__body {
+      .el-input__inner {
+        border-radius: 8px;
+      }
+      
+      .el-button {
+        border-radius: 8px;
+      }
     }
   }
 }
