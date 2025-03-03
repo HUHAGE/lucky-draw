@@ -1,7 +1,10 @@
 <template>
   <div id="root">
     <header>
-      <Publicity v-show="!running" />
+      <div class="title">年会抽奖</div>
+      <div class="result-display">
+        <Publicity v-show="!running" />
+      </div>
       <div class="header-buttons">
         <el-button class="res" type="text" @click="showResult = true">
           <i class="el-icon-trophy"></i>
@@ -13,105 +16,108 @@
         </el-button>
       </div>
     </header>
-    <div id="main" :class="{ mask: showRes }"></div>
-    <div id="tags">
-      <ul v-for="item in datas" :key="item.key">
-        <li>
-          <a
-            href="javascript:void(0);"
-            :style="{
-              color: '#fff',
-            }"
-          >
-            {{ item.name ? item.name : item.key }}
-            <img v-if="item.photo" :src="item.photo" :width="50" :height="50" />
-          </a>
-        </li>
-      </ul>
-    </div>
-    <transition name="bounce">
-      <div id="resbox" v-show="showRes">
-        <p @click="showRes = false">{{ categoryName }}抽奖结果：</p>
-        <div class="container">
-          <span
-            v-for="item in resArr"
-            :key="item"
-            class="itemres"
-            :style="resCardStyle"
-            :data-id="item"
-            @click="showRes = false"
-            :class="{
-              numberOver:
-                !!photos.find((d) => d.id === item) ||
-                !!list.find((d) => d.key === item),
-            }"
-          >
-            <span class="cont" v-if="!photos.find((d) => d.id === item)">
-              <span
-                v-if="!!list.find((d) => d.key === item)"
-                :style="{
-                  fontSize: '40px',
-                }"
-              >
-                {{ list.find((d) => d.key === item).name }}
-              </span>
-              <span v-else>
-                {{ item }}
-              </span>
-            </span>
-            <img
-              v-if="photos.find((d) => d.id === item)"
-              :src="photos.find((d) => d.id === item).value"
-              alt="photo"
-              :width="160"
-              :height="160"
-            />
-          </span>
-        </div>
+
+    <div class="main-content">
+      <div id="main" :class="{ mask: showRes }"></div>
+      <div id="tags">
+        <ul v-for="item in datas" :key="item.key">
+          <li>
+            <a
+              href="javascript:void(0);"
+              :style="{
+                color: '#fff',
+              }"
+            >
+              {{ item.name ? item.name : item.key }}
+              <img v-if="item.photo" :src="item.photo" :width="50" :height="50" />
+            </a>
+          </li>
+        </ul>
       </div>
-    </transition>
+      <transition name="bounce">
+        <div id="resbox" v-show="showRes">
+          <p @click="showRes = false">{{ categoryName }}抽奖结果：</p>
+          <div class="container">
+            <span
+              v-for="item in resArr"
+              :key="item"
+              class="itemres"
+              :style="resCardStyle"
+              :data-id="item"
+              @click="showRes = false"
+              :class="{
+                numberOver:
+                  !!photos.find((d) => d.id === item) ||
+                  !!list.find((d) => d.key === item),
+              }"
+            >
+              <span class="cont" v-if="!photos.find((d) => d.id === item)">
+                <span
+                  v-if="!!list.find((d) => d.key === item)"
+                  :style="{
+                    fontSize: '40px',
+                  }"
+                >
+                  {{ list.find((d) => d.key === item).name }}
+                </span>
+                <span v-else>
+                  {{ item }}
+                </span>
+              </span>
+              <img
+                v-if="photos.find((d) => d.id === item)"
+                :src="photos.find((d) => d.id === item).value"
+                alt="photo"
+                :width="160"
+                :height="160"
+              />
+            </span>
+          </div>
+        </div>
+      </transition>
 
-    <el-button
-      class="audio"
-      type="text"
-      @click="
-        () => {
-          playAudio(!audioPlaying);
-        }
-      "
-    >
-      <i
-        class="iconfont"
-        :class="[audioPlaying ? 'iconstop' : 'iconplay1']"
-      ></i>
-    </el-button>
+      <el-button
+        class="audio"
+        type="text"
+        @click="
+          () => {
+            playAudio(!audioPlaying);
+          }
+        "
+      >
+        <i
+          class="iconfont"
+          :class="[audioPlaying ? 'iconstop' : 'iconplay1']"
+        ></i>
+      </el-button>
 
-    <LotteryConfig :visible.sync="showConfig" @resetconfig="reloadTagCanvas" />
-    <Tool
-      @toggle="toggle"
-      @resetConfig="reloadTagCanvas"
-      @getPhoto="getPhoto"
-      :running="running"
-      :closeRes="closeRes"
-    />
-    <Result :visible.sync="showResult"></Result>
+      <LotteryConfig :visible.sync="showConfig" @resetconfig="reloadTagCanvas" />
+      <Tool
+        @toggle="toggle"
+        @resetConfig="reloadTagCanvas"
+        @getPhoto="getPhoto"
+        :running="running"
+        :closeRes="closeRes"
+      />
+      <Result :visible.sync="showResult"></Result>
 
-    <span class="copy-right">
-      Copyright©zhangyongfeng5350@gmail.com
-    </span>
+      <span class="copy-right">
+        Copyright©zhangyongfeng5350@gmail.com
+      </span>
 
-    <audio
-      id="audiobg"
-      preload="auto"
-      controls
-      autoplay
-      loop
-      @play="playHandler"
-      @pause="pauseHandler"
-    >
-      <source :src="audioSrc" />
-      你的浏览器不支持audio标签
-    </audio>
+      <audio
+        id="audiobg"
+        preload="auto"
+        controls
+        autoplay
+        loop
+        @play="playHandler"
+        @pause="pauseHandler"
+      >
+        <source :src="audioSrc" />
+        你的浏览器不支持audio标签
+      </audio>
+    </div>
   </div>
 </template>
 <script>
@@ -380,27 +386,51 @@ export default {
   position: relative;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  .mask {
-    backdrop-filter: blur(5px);
-  }
+
   header {
     height: 80px;
-    line-height: 80px;
-    position: relative;
+    padding: 0 30px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: 4px;
+      background: linear-gradient(45deg, #fff 30%, #ffeb3b 50%, #fff 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 3s linear infinite;
+      width: 200px;
+    }
+
+    .result-display {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+
     .header-buttons {
-      position: static;
       display: flex;
       gap: 20px;
-      z-index: 2;
+      width: 200px;
+      justify-content: flex-end;
       
       .el-button {
         font-size: 16px;
@@ -442,6 +472,14 @@ export default {
       }
     }
   }
+
+  .main-content {
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    position: relative;
+    overflow: hidden;
+  }
+
   .audio {
     position: absolute;
     top: 100px;
@@ -531,6 +569,12 @@ export default {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
 }
 </style>

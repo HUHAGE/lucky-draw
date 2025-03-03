@@ -330,30 +330,83 @@ export default {
 <style lang="scss">
 #tool {
   position: fixed;
-  width: 60px;
   top: 50%;
-  right: 20px;
+  right: 30px;
   transform: translateY(-50%);
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 15px;
+  z-index: 10;
+
   .el-button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
     color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     
-    &:hover {
-      background: rgba(255, 255, 255, 0.4);
-      transform: scale(1.05);
+    &.el-button--primary {
+      width: 120px;
+      padding: 0;
+      margin: 0;
+      background: linear-gradient(45deg, #23d5ab, #23a6d5);
+      
+      &:hover {
+        background: linear-gradient(45deg, #23a6d5, #23d5ab);
+      }
     }
     
-    & + .el-button {
-      margin-top: 20px;
-      margin-left: 0px;
+    &:nth-child(2) {
+      background: linear-gradient(45deg, #ee7752, #e73c7e);
+      
+      &:hover {
+        background: linear-gradient(45deg, #e73c7e, #ee7752);
+      }
+    }
+    
+    &:nth-child(3) {
+      background: linear-gradient(45deg, #904e95, #e96443);
+      
+      &:hover {
+        background: linear-gradient(45deg, #e96443, #904e95);
+      }
+    }
+    
+    &:nth-child(4) {
+      background: linear-gradient(45deg, #614385, #516395);
+      
+      &:hover {
+        background: linear-gradient(45deg, #516395, #614385);
+      }
+    }
+
+    &:hover {
+      transform: translateX(-5px);
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateX(-2px);
+    }
+
+    &.is-disabled {
+      background: rgba(255, 255, 255, 0.2) !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      cursor: not-allowed;
+      transform: none;
+      
+      &:hover {
+        box-shadow: none;
+      }
     }
   }
 }
