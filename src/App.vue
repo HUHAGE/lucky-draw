@@ -2,12 +2,16 @@
   <div id="root">
     <header>
       <Publicity v-show="!running" />
-      <el-button class="res" type="text" @click="showResult = true">
-        抽奖结果
-      </el-button>
-      <el-button class="con" type="text" @click="showConfig = true">
-        抽奖配置
-      </el-button>
+      <div class="header-buttons">
+        <el-button class="res" type="text" @click="showResult = true">
+          <i class="el-icon-trophy"></i>
+          抽奖结果
+        </el-button>
+        <el-button class="con" type="text" @click="showConfig = true">
+          <i class="el-icon-setting"></i>
+          抽奖配置
+        </el-button>
+      </div>
     </header>
     <div id="main" :class="{ mask: showRes }"></div>
     <div id="tags">
@@ -380,19 +384,61 @@ export default {
     backdrop-filter: blur(5px);
   }
   header {
-    height: 50px;
-    line-height: 50px;
+    height: 80px;
+    line-height: 80px;
     position: relative;
-    .el-button {
-      position: absolute;
-      top: 17px;
-      padding: 0;
-      z-index: 9999;
-      &.con {
-        right: 20px;
-      }
-      &.res {
-        right: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    
+    .header-buttons {
+      position: static;
+      display: flex;
+      gap: 20px;
+      z-index: 2;
+      
+      .el-button {
+        font-size: 16px;
+        color: white;
+        padding: 10px 20px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-radius: 25px;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        
+        i {
+          margin-right: 5px;
+          font-size: 18px;
+        }
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        &.res {
+          background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+          border: none;
+          
+          &:hover {
+            background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+          }
+        }
+        
+        &.con {
+          background: linear-gradient(45deg, #23a6d5, #23d5ab);
+          border: none;
+          
+          &:hover {
+            background: linear-gradient(45deg, #23d5ab, #23a6d5);
+          }
+        }
       }
     }
   }
