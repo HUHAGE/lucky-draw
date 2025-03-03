@@ -17,6 +17,7 @@
       :visible.sync="showSetwat"
       class="setwat-dialog"
       width="400px"
+      title="抽奖配置"
     >
       <el-form ref="form" :model="form" label-width="80px" size="mini">
         <el-form-item label="抽取奖项">
@@ -72,7 +73,6 @@
 
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即抽奖</el-button>
-          <el-button @click="showSetwat = false">取消</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -411,9 +411,99 @@ export default {
   }
 }
 .setwat-dialog {
-  .colorred {
-    color: red;
-    font-weight: bold;
+  .el-dialog {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .el-dialog__header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      
+      .el-dialog__title {
+        font-size: 18px;
+        font-weight: 600;
+        background: linear-gradient(45deg, #23d5ab, #23a6d5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .el-dialog__body {
+      padding: 25px 20px !important;
+
+      .el-form-item {
+        margin-bottom: 20px !important;
+        
+        &:last-child {
+          margin-bottom: 0 !important;
+        }
+
+        .el-form-item__label {
+          font-weight: 500;
+          color: #606266;
+        }
+
+        .el-select {
+          width: 100%;
+        }
+
+        .el-select .el-input__inner,
+        .el-input__inner {
+          border-radius: 8px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+          
+          &:hover, &:focus {
+            border-color: #23a6d5;
+            box-shadow: 0 0 0 2px rgba(35, 166, 213, 0.1);
+          }
+        }
+
+        .el-switch {
+          margin-right: 10px;
+        }
+      }
+
+      .colorred {
+        color: #e73c7e;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    }
+
+    .el-dialog__footer {
+      padding: 10px 20px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // 立即抽奖按钮样式
+  .el-button--primary {
+    width: 180px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #23d5ab, #23a6d5);
+    box-shadow: 0 4px 12px rgba(35, 166, 213, 0.2);
+    transition: all 0.3s ease;
+    margin: 0;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(35, 166, 213, 0.3);
+      background: linear-gradient(45deg, #23a6d5, #23d5ab);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
   }
 }
 .import-dialog {
